@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coding Econometrics</title>
+    <description>This site is dedicated to computational econometrics using open source software. 
+</description>
+    <link>http://yourdomain.com/</link>
+    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 18 May 2016 21:12:50 +0800</pubDate>
+    <lastBuildDate>Wed, 18 May 2016 21:12:50 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.3</generator>
+    
+      <item>
+        <title>My Second Post</title>
+        <description>&lt;h2 id=&quot;languages&quot;&gt;Languages&lt;/h2&gt;
+
+&lt;p&gt;A frequenty question from students are the choice of econometric software. The list is continuing to grow as econometric techniques become more and more sophisticated and the area continue to diverse.&lt;/p&gt;
+
+&lt;p&gt;Consider the following simple regression:
+\[ \mathbf{Y} = \mathbf{X} \pmb{\beta} + \pmb{\varepsilon} \]&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 18 May 2016 21:12:50 +0800</pubDate>
+        <link>http://yourdomain.com/2016/05/18/secndpost.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/05/18/secndpost.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Generating multinomial terms with loop and recursion</title>
+        <description>&lt;h1 id=&quot;background&quot;&gt;Background&lt;/h1&gt;
+
+&lt;p&gt;Consider the multinomial expansion:
+\[ \left ( \sum^n_{i=1} x_i \right )^k = \sum_{k_1=0}^k \ldots \sum_{k_{n-1}=0}^{k_{n-2}} \left [ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \prod ^n_{i=1} x_i^{\Delta k_i} \right ] \]&lt;/p&gt;
+
+&lt;p&gt;where \( \Delta k_i = k_{i+1} - k_i \) with \( k_0 = k \) and \( k_n = 0 \).&lt;/p&gt;
+
+&lt;p&gt;Note that&lt;/p&gt;
+
+&lt;p&gt;\[ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \]&lt;/p&gt;
+
+&lt;p&gt;represents the number of repeatitions of the term \( \prod_{i=1}^n x_i^{\Delta k_i} \) for a given tuple  \( \left ( \Delta k_1, \ldots, \Delta k_n \right ) \).&lt;/p&gt;
+
+&lt;p&gt;An example may help to demonstrate this. Set \( n=2 \) then this is simply the binomial expansion. That is,&lt;/p&gt;
+
+&lt;p&gt;\[ \left ( x_1 + x_2 \right )^k = \sum^k_{i=0] x_1^i x_2^{k-i} \]&lt;/p&gt;
+
+&lt;p&gt;Note that the exponents of both terms on the right hand side form a set of tuples \( (i, k-i \) for \( i = 0,\ldots k \).&lt;/p&gt;
+
+&lt;p&gt;Assuming we are interested in generating all the unique terms on the right hand side. That is, we are interested in generating all the tuples \( \left ( \Delta k_1, \ldots, \Delta k_n \right ) \).&lt;/p&gt;
+
+&lt;h1 id=&quot;the-naive-approach&quot;&gt;The Naive Approach&lt;/h1&gt;
+
+&lt;p&gt;The problem is relatively straightforward to solve for any given \( k \) and \( n \) using mulitple “for” loops. The code below shows the solution for \( k=4 \) with with \( n = 4 \).&lt;/p&gt;
+
+&lt;noscript&gt;&lt;pre&gt;k = 4
+collect = []
+for i in range(0,k+1):
+    for j in range(0,i+1):
+        for l in range(0,j+1):
+            for m in range(0,l+1):
+                collect.append(np.array([k-i,i-j,j-l,l-m, m]))
+collect = np.array(collect)
+print(collect)
+
+&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/chansta/f37503258f8de7c056a857adefc3de83.js?file=multinomial_naive.py&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;However, the value of \( k \) dictates the number of loops required. This makes it difficult to allow user-specified \( k \). A more flexible way to accommodate user-specified \( k \) is&lt;/p&gt;
+
+&lt;noscript&gt;&lt;pre&gt;def multi(k,n):
+    if n == 1:
+        return np.array([k]);
+    else:
+        for k1 in range(0,k+1):
+            if k1 == 0:
+                temp = multi(0, n-1)
+            else:
+                temp = multi(k1,n-1)
+            tempT = temp.shape[0]
+            subcollect = np.c_[ np.ones(tempT)*(k-k1), temp]
+            if k1 == 0:
+                collect =  subcollect
+            else:
+                collect = np.r_[collect, subcollect]
+    return collect
+&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/chansta/f37503258f8de7c056a857adefc3de83.js?file=multinomial_recursion.py&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;Note that this is a mixed of “for” loop and recursion.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 18 May 2016 21:12:50 +0800</pubDate>
+        <link>http://yourdomain.com/2016/05/18/multinomial.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/05/18/multinomial.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>My First Post</title>
+        <description>&lt;h1 id=&quot;first-post-and-welcome&quot;&gt;First Post and Welcome&lt;/h1&gt;
+
+&lt;p&gt;This is my first post using Jekyll and welcome to my site. For those who are interested in my old codes, they still live in my &lt;a href=&quot;http://fchan.freeshell.org/index.html&quot;&gt;old site&lt;/a&gt; at &lt;a href=&quot;http://www.freeshell.org&quot;&gt;FreeShell&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As mentioned in &lt;a href=&quot;/about/&quot;&gt;About Me&lt;/a&gt;, the purpose of this site is to share my coding experiences as an econometrician. As such, most of my programming problems arise from my attempts to code certin econometric and/or statistical procedures, most likely in Python and/or C.&lt;/p&gt;
+
+&lt;p&gt;However, my first post is to express my deepest gratitude to &lt;a href=&quot;http://www.jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; and &lt;a href=&quot;http://www.github.com&quot;&gt;Github&lt;/a&gt; which make this blog possible. I would also like to thank &lt;a href=&quot;http://www.andreabedini.com&quot;&gt;Andrea Bedini&lt;/a&gt; who pointed me to the right direction that is Jekyll+github.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 23 Apr 2016 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/2016/04/23/first-post.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/04/23/first-post.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
