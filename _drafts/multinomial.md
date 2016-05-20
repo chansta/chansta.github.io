@@ -19,9 +19,9 @@ represents the number of repeatitions of the term \\( \prod_{i=1}^n x_i^{\Delta 
 
 An example may help to demonstrate this. Set \\( n=2 \\) then this is simply the binomial expansion. That is, 
 
-\\[ \left ( x_1 + x_2 \right )^k = \sum^k_{i=0] x_1^i x_2^{k-i} \\]
+\\[ \left ( x_1 + x_2 \right )^k = \sum^k_{i=0} \frac{k!}{i! (k-i)!} x_1^i x_2^{k-i} \\]
 
-Note that the exponents of both terms on the right hand side form a set of tuples \\( (i, k-i \\) for \\( i = 0,\ldots k \\). 
+Note that the exponents of both terms on the right hand side form a set of tuples \\( (i, k-i ) \\) for \\( i = 0,\ldots k \\). 
 
 Assuming we are interested in generating all the unique terms on the right hand side. That is, we are interested in generating all the tuples \\( \left ( \Delta k_1, \ldots, \Delta k_n \right ) \\). 
 
