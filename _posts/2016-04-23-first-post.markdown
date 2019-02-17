@@ -12,6 +12,8 @@ As mentioned in [About Me][about], the purpose of this site is to share my codin
 
 However, my first post is to express my deepest gratitude to [Jekyll][jekyll] and [Github][github] which make this blog possible. I would also like to thank [Andrea Bedini][andrea] who pointed me to the right direction that is Jekyll+github. 
 
+The migration from github to gitlab is a natural one since MS....   
+
  [old_site]: http://fchan.freeshell.org/index.html
  [freeshell]: http://www.freeshell.org
  [about]: /about/
