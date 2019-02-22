@@ -4,10 +4,10 @@ pages:
   script:
   - gem install jekyll
   - jekyll build -d public/
+  - jekyll-gist
   artifacts:
     paths:
     - public
   only:
   - master
-gems:
-    - jekyll-gist
+    
