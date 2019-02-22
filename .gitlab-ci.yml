@@ -1,5 +1,4 @@
 image: ruby:2.3
-
 pages:
   script:
   - gem install jekyll
@@ -9,5 +8,3 @@ pages:
     - public
   only:
   - master
-plugins:
-  - jekyll-gist  
