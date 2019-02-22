@@ -4,35 +4,19 @@
     <title>Coding Econometrics</title>
     <description>This site is dedicated to computational econometrics using open source software. 
 </description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 May 2016 21:12:50 +0800</pubDate>
-    <lastBuildDate>Wed, 18 May 2016 21:12:50 +0800</lastBuildDate>
-    <generator>Jekyll v3.1.3</generator>
-    
-      <item>
-        <title>My Second Post</title>
-        <description>&lt;h2 id=&quot;languages&quot;&gt;Languages&lt;/h2&gt;
-
-&lt;p&gt;A frequenty question from students are the choice of econometric software. The list is continuing to grow as econometric techniques become more and more sophisticated and the area continue to diverse.&lt;/p&gt;
-
-&lt;p&gt;Consider the following simple regression:
-\[ \mathbf{Y} = \mathbf{X} \pmb{\beta} + \pmb{\varepsilon} \]&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 18 May 2016 21:12:50 +0800</pubDate>
-        <link>http://yourdomain.com/2016/05/18/secndpost.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/05/18/secndpost.html</guid>
-        
-        
-      </item>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 26 Oct 2018 13:17:48 +0800</pubDate>
+    <lastBuildDate>Fri, 26 Oct 2018 13:17:48 +0800</lastBuildDate>
+    <generator>Jekyll v3.7.0</generator>
     
       <item>
         <title>Generating multinomial terms with loop and recursion</title>
         <description>&lt;h1 id=&quot;background&quot;&gt;Background&lt;/h1&gt;
 
-&lt;p&gt;Consider the multinomial expansion:
-\[ \left ( \sum^n_{i=1} x_i \right )^k = \sum_{k_1=0}^k \ldots \sum_{k_{n-1}=0}^{k_{n-2}} \left [ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \prod ^n_{i=1} x_i^{\Delta k_i} \right ] \]&lt;/p&gt;
+&lt;p&gt;Consider the multinomial expansion:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left ( \sum^n_{i=1} x_i \right )^k = \sum_{k_1=0}^k \ldots \sum_{k_{n-1}=0}^{k_{n-2}} \left [ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \prod ^n_{i=1} x_i^{\Delta k_i} \right ]&lt;/script&gt;
 
 &lt;p&gt;where \( \Delta k_i = k_{i+1} - k_i \) with \( k_0 = k \) and \( k_n = 0 \).&lt;/p&gt;
 
@@ -44,9 +28,9 @@
 
 &lt;p&gt;An example may help to demonstrate this. Set \( n=2 \) then this is simply the binomial expansion. That is,&lt;/p&gt;
 
-&lt;p&gt;\[ \left ( x_1 + x_2 \right )^k = \sum^k_{i=0] x_1^i x_2^{k-i} \]&lt;/p&gt;
+&lt;p&gt;\[ \left ( x_1 + x_2 \right )^k = \sum^k_{i=0} \frac{k!}{i! (k-i)!} x_1^i x_2^{k-i} \]&lt;/p&gt;
 
-&lt;p&gt;Note that the exponents of both terms on the right hand side form a set of tuples \( (i, k-i \) for \( i = 0,\ldots k \).&lt;/p&gt;
+&lt;p&gt;Note that the exponents of both terms on the right hand side form a set of tuples \( (i, k-i ) \) for \( i = 0,\ldots k \).&lt;/p&gt;
 
 &lt;p&gt;Assuming we are interested in generating all the unique terms on the right hand side. That is, we are interested in generating all the tuples \( \left ( \Delta k_1, \ldots, \Delta k_n \right ) \).&lt;/p&gt;
 
@@ -54,45 +38,64 @@
 
 &lt;p&gt;The problem is relatively straightforward to solve for any given \( k \) and \( n \) using mulitple “for” loops. The code below shows the solution for \( k=4 \) with with \( n = 4 \).&lt;/p&gt;
 
-&lt;noscript&gt;&lt;pre&gt;k = 4
-collect = []
-for i in range(0,k+1):
-    for j in range(0,i+1):
-        for l in range(0,j+1):
-            for m in range(0,l+1):
-                collect.append(np.array([k-i,i-j,j-l,l-m, m]))
-collect = np.array(collect)
-print(collect)
-
-&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/chansta/f37503258f8de7c056a857adefc3de83.js?file=multinomial_naive.py&quot;&gt; &lt;/script&gt;
+&lt;script src=&quot;https://gitlab.com/snippets/1746200.js&quot;&gt;&lt;/script&gt;
 
 &lt;p&gt;However, the value of \( k \) dictates the number of loops required. This makes it difficult to allow user-specified \( k \). A more flexible way to accommodate user-specified \( k \) is&lt;/p&gt;
 
-&lt;noscript&gt;&lt;pre&gt;def multi(k,n):
-    if n == 1:
-        return np.array([k]);
-    else:
-        for k1 in range(0,k+1):
-            if k1 == 0:
-                temp = multi(0, n-1)
-            else:
-                temp = multi(k1,n-1)
-            tempT = temp.shape[0]
-            subcollect = np.c_[ np.ones(tempT)*(k-k1), temp]
-            if k1 == 0:
-                collect =  subcollect
-            else:
-                collect = np.r_[collect, subcollect]
-    return collect
-&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/chansta/f37503258f8de7c056a857adefc3de83.js?file=multinomial_recursion.py&quot;&gt; &lt;/script&gt;
+&lt;script src=&quot;https://gitlab.com/snippets/1746201.js&quot;&gt;&lt;/script&gt;
 
-&lt;p&gt;Note that this is a mixed of “for” loop and recursion.&lt;/p&gt;
+&lt;p&gt;Note that this is a mixed of “for” loop and recursion. Or&lt;/p&gt;
+
 </description>
-        <pubDate>Wed, 18 May 2016 21:12:50 +0800</pubDate>
-        <link>http://yourdomain.com/2016/05/18/multinomial.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/05/18/multinomial.html</guid>
+        <pubDate>Fri, 26 Oct 2018 13:17:42 +0800</pubDate>
+        <link>http://localhost:4000/2018/10/26/multinomial.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/10/26/multinomial.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Programming for Econometricians - An Overview</title>
+        <description>&lt;h2 id=&quot;what-bother&quot;&gt;What bother?&lt;/h2&gt;
+
+&lt;p&gt;It is certainly true that modern econometric software, such as STATA and Eviews, are powerful tools for econometric analysis. The power of these tools centers around the fact that virtually all popular econometric routines, no matter how complicated or sophasticated, are reduced into a sequence of simple “point and click” procedures or a few lines of relatively simple commands. The ability of conducting econometric analysis without any knowledge of programming certainly has its own appeals. After all, why should a non-programmer learn programming?&lt;/p&gt;
+
+&lt;p&gt;There are few good reasons why econometricians, and to some extend, applied economists should have programming skills.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Automation: Mordern analysis often require multiple analyses on the same dataset, or same analysis on multiple datasets. Rather than conducting the analysis by typing the same commands over and over again, it is certainly more efficient to create a simple script to automate any repetitive tasks. &lt;em&gt;Automation&lt;/em&gt; requires programming skills.&lt;/li&gt;
+  &lt;li&gt;Progress of econometrics is often faster than the software update cycles. Relying on pre-programmed routines in your favorite software means that you ability to access the latest econometric techniqes is limited. The ability to program means that you can implement the latest econometric techniques without having to wait for the software update.&lt;/li&gt;
+  &lt;li&gt;The popularity of econometric techniques seems to be directly related to their accessibilities. Ironically, end-users of new techniques do not generally want to do programming. Thus, if you want to promote your new techniques, chances are, you will have to program it yourself and make it publically available.&lt;/li&gt;
+  &lt;li&gt;Monte Carlo experiements are often expected in econometric research. Some of these experiements are computationally extensive but good background in programming can often help to improve computation efficiency. 
+These arguments generally point to (i) if you are an end-user, programming skills will make your life easier by providing the ability of automating repetitive task; (ii) if you are an econometrician, then programming is a &lt;strong&gt;must&lt;/strong&gt; have skills.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;five-elements&quot;&gt;Five Elements&lt;/h2&gt;
+
+&lt;p&gt;Even if you found the arguments above convincing, the reality of leanring programming can be a challenging to those who have never programmed before. Then, of course, there is this seemingly important question, which language? Surely you do not want to learn one language only to find out it is not sufficient and have to learn something else.&lt;/p&gt;
+
+&lt;p&gt;The bad news is that programming language(s) is a little like the latest technology. There are always better, newer alternatives.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 20 Jan 2018 21:49:37 +0800</pubDate>
+        <link>http://localhost:4000/2018/01/20/fiveelements.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/20/fiveelements.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>My Second Post</title>
+        <description>&lt;h2 id=&quot;languages&quot;&gt;Languages&lt;/h2&gt;
+
+&lt;p&gt;A frequenty question from students are the choice of econometric software. The list is continuing to grow as econometric techniques become more and more sophisticated and the area continue to diverse.&lt;/p&gt;
+
+&lt;p&gt;Consider the following simple regression:
+\[ \mathbf{Y} = \mathbf{X} \pmb{\beta} + \pmb{\varepsilon} \]&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 04 Feb 2017 19:27:12 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/04/secndpost.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/04/secndpost.html</guid>
         
         
       </item>
@@ -109,8 +112,8 @@ print(collect)
 
 </description>
         <pubDate>Sat, 23 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/2016/04/23/first-post.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/04/23/first-post.html</guid>
+        <link>http://localhost:4000/2016/04/23/first-post.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/04/23/first-post.html</guid>
         
         
       </item>

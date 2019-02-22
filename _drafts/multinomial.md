@@ -7,7 +7,9 @@ Background
 ==========
 
 Consider the multinomial expansion:
-\\[ \left ( \sum^n_{i=1} x_i \right )^k = \sum_{k_1=0}^k \ldots \sum_{k_{n-1}=0}^{k_{n-2}} \left [ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \prod ^n_{i=1} x_i^{\Delta k_i} \right ] \\]
+
+$$ \left ( \sum^n_{i=1} x_i \right )^k = \sum_{k_1=0}^k \ldots \sum_{k_{n-1}=0}^{k_{n-2}} \left [ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \prod ^n_{i=1} x_i^{\Delta k_i} \right ] $$ 
+
 
 where \\( \Delta k_i = k_{i+1} - k_i \\) with \\( k_0 = k \\) and \\( k_n = 0 \\). 
 
@@ -30,10 +32,12 @@ The Naive Approach
 
 The problem is relatively straightforward to solve for any given \\( k \\) and \\( n \\) using mulitple "for" loops. The code below shows the solution for \\( k=4 \\) with with \\( n = 4 \\). 
 
-{% gist chansta/f37503258f8de7c056a857adefc3de83 multinomial_naive.py%} 
+ {% comment %}{% gist chansta/f37503258f8de7c056a857adefc3de83 multinomial_naive.py%} {% endcomment %}
+<script src="https://gitlab.com/snippets/1746200.js"></script>
 
 However, the value of \\( k \\) dictates the number of loops required. This makes it difficult to allow user-specified \\( k \\). A more flexible way to accommodate user-specified \\( k \\) is 
 
-{% gist chansta/f37503258f8de7c056a857adefc3de83 multinomial_recursion.py%} 
+{% comment %}{% gist chansta/f37503258f8de7c056a857adefc3de83 multinomial_recursion.py%}{% endcomment %}
+<script src="https://gitlab.com/snippets/1746201.js"></script>
+Note that this is a mixed of "for" loop and recursion. Or
 
-Note that this is a mixed of "for" loop and recursion. 

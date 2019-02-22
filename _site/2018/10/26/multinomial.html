@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About Me</title>
-  <meta name="description" content="This site is dedicated to computational econometrics using open source software. 
-">
+  <title>Generating multinomial terms with loop and recursion</title>
+  <meta name="description" content="Background">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/2018/10/26/multinomial.html">
   <link rel="alternate" type="application/rss+xml" title="Coding Econometrics" href="http://localhost:4000/feed.xml">
 </head>
 
@@ -61,24 +60,47 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About Me</h1>
+    <h1 class="post-title" itemprop="name headline">Generating multinomial terms with loop and recursion</h1>
+    <p class="post-meta"><time datetime="2018-10-26T13:17:42+08:00" itemprop="datePublished">Oct 26, 2018</time></p>
   </header>
 
-  <div class="post-content">
-    <p>My name is Felix and I am an <a href="https://en.wikipedia.org/wiki/Econometrics">econometrician</a>. Officially I am an Associate Professor in the <a href="http://business.curtin.edu.au/schools-and-departments/economics-and-finance/">School of Economics and Finance</a> at <a href="http://www.curtin.edu.au">Curtin University</a>. My research concerns mostly on theoretical and applied econometrics but my passion is the promotion of computational econometrics through open source software.</p>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="background">Background</h1>
 
-<p>This passion is a result of one of the most frequently asked questions by students, namely,</p>
+<p>Consider the multinomial expansion:</p>
 
-<p><em>which econometrics software should I use?</em></p>
+<script type="math/tex; mode=display">\left ( \sum^n_{i=1} x_i \right )^k = \sum_{k_1=0}^k \ldots \sum_{k_{n-1}=0}^{k_{n-2}} \left [ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \prod ^n_{i=1} x_i^{\Delta k_i} \right ]</script>
 
-<p>While software such as <a href="http://www.eviews.com">Eviews</a> and <a href="http://www.stata.com">STATA</a> provide very powerful tools for econometric analysis, I maintain that the best way to learn econometrics is to implement various econometric techniques in computers. This is in the same spirit as the old wisdom that <em>the best way to test your understanding about a concept, is trying to explain that concept to someone else</em>. In other words, one can perhaps take some comfort in their understanding on certain econometric concepts, if they can instruct the computer to conduct the exact econometric analysis.</p>
+<p>where \( \Delta k_i = k_{i+1} - k_i \) with \( k_0 = k \) and \( k_n = 0 \).</p>
 
-<p>The open source community provided a wide range of platforms to make this learning exercise a complete joy. Apart from the statistical orientated languages such as <a href="http://www.r-project.org">R</a>, languages such as <a href="http://www.python.org">Python</a> and <a href="http://www.julialang.org">Julia</a> provide powerful and cost effective platforms for poor PhD students to consolidate and expand their econometric knowledge.</p>
+<p>Note that</p>
 
-<p>While I have a slight preference towards Python and C with the assistant of the <a href="http://www.gnu.org/software/gsl/">GSL</a> library, I am hoping this blog serves a useful purpose for students and professionals to join and discuss programming issues concerning econometric problems.</p>
+<p>\[ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \]</p>
+
+<p>represents the number of repeatitions of the term \( \prod_{i=1}^n x_i^{\Delta k_i} \) for a given tuple  \( \left ( \Delta k_1, \ldots, \Delta k_n \right ) \).</p>
+
+<p>An example may help to demonstrate this. Set \( n=2 \) then this is simply the binomial expansion. That is,</p>
+
+<p>\[ \left ( x_1 + x_2 \right )^k = \sum^k_{i=0} \frac{k!}{i! (k-i)!} x_1^i x_2^{k-i} \]</p>
+
+<p>Note that the exponents of both terms on the right hand side form a set of tuples \( (i, k-i ) \) for \( i = 0,\ldots k \).</p>
+
+<p>Assuming we are interested in generating all the unique terms on the right hand side. That is, we are interested in generating all the tuples \( \left ( \Delta k_1, \ldots, \Delta k_n \right ) \).</p>
+
+<h1 id="the-naive-approach">The Naive Approach</h1>
+
+<p>The problem is relatively straightforward to solve for any given \( k \) and \( n \) using mulitple “for” loops. The code below shows the solution for \( k=4 \) with with \( n = 4 \).</p>
+
+<script src="https://gitlab.com/snippets/1746200.js"></script>
+
+<p>However, the value of \( k \) dictates the number of loops required. This makes it difficult to allow user-specified \( k \). A more flexible way to accommodate user-specified \( k \) is</p>
+
+<script src="https://gitlab.com/snippets/1746201.js"></script>
+
+<p>Note that this is a mixed of “for” loop and recursion. Or</p>
 
 
   </div>
