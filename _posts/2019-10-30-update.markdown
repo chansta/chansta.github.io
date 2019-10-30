@@ -1,0 +1,10 @@
+---
+layout: post
+title: Quick Update 
+---
+
+# Moving Home
+
+This site has since moved from github to gitlab. 
+
+
