@@ -5,7 +5,7 @@ title: Quick Update
 
 # Moving Home
 
-This site has since moved from [github](http://www.github.com) to [gitlab](http://www.gitlab.com). 
+This site has since moved from [github](http://www.github.com) to [gitlab](http://www.gitlab.com). The reaons of the move is rather personal. 
 
  
 
