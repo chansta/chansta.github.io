@@ -1,11 +1,15 @@
 ---
 layout: post
-title: Quick Update 
+title: Update 
 ---
 
 # Moving Home
 
-This site has since moved from [github](http://www.github.com) to [gitlab](http://www.gitlab.com). The reaons of the move is rather personal. 
+This site has since moved from [github](http://www.github.com) to [gitlab](http://www.gitlab.com). This allows me to consoliate all of my exisiting codes. This will hopefully allow me to have a smoother workflow, so that I can actually do something meaningful in this blog. 
+
+# Moving forward
+
+The idea of this blog is to provide some thoughts and resources for anyone who are interested in computational econometrics, especially for people with no coding background but interested in using open source languages. Topics and ideas are welcome.  
 
  
 
