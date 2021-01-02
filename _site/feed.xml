@@ -4,11 +4,101 @@
     <title>Coding Econometrics</title>
     <description>This site is dedicated to computational econometrics using open source software. 
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 26 Oct 2018 13:17:48 +0800</pubDate>
-    <lastBuildDate>Fri, 26 Oct 2018 13:17:48 +0800</lastBuildDate>
-    <generator>Jekyll v3.7.0</generator>
+    <link>http://chansta.gitlab.io//</link>
+    <atom:link href="http://chansta.gitlab.io//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 02 Jan 2021 16:58:04 +0800</pubDate>
+    <lastBuildDate>Sat, 02 Jan 2021 16:58:04 +0800</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Programming for Econometricians - An Overview</title>
+        <description>&lt;h2 id=&quot;why-bother&quot;&gt;Why bother?&lt;/h2&gt;
+
+&lt;p&gt;It is certainly true that modern econometric software, such as STATA and Eviews, are powerful tools for econometric analysis. The power of these tools centers around the fact that virtually all popular econometric routines, no matter how complicated or sophasticated, are reduced into a sequence of simple “point and click” procedures or a few lines of relatively simple commands. The ability of conducting econometric analysis without any knowledge of programming certainly has its own appeals. After all, why should a non-programmer learn programming?&lt;/p&gt;
+
+&lt;p&gt;There are few good reasons why econometricians, and to some extend, applied economists should have programming skills.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Automation: Mordern analysis often require multiple analyses on the same dataset, or same analysis on multiple datasets. Rather than conducting the analysis by typing the same commands over and over again, it is certainly more efficient to create a simple script to automate any repetitive tasks. &lt;em&gt;Automation&lt;/em&gt; requires programming skills.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Cutting edge: The progress of econometrics is often faster than the software update cycles. Relying on pre-programmed routines in your favorite software means that your ability to utilise the latest econometric techniqes is limited by the software update cycle. The ability to program means that you can implement the latest econometric techniques without having to wait for the software update.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Promotion: The popularity of econometric techniques seems to be directly related to their accessibilities. Ironically, end-users of new techniques do not generally want to do programming. Thus, if you want to promote your new techniques, chances are, you will have to program it yourself and make it publically available.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Simulation: Monte Carlo experiements are often expected in econometric research. Some of these experiements are computationally extensive but good background in programming can often help to improve computation efficiency.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Emerging importance of “big data”. Regardless your view on the term “big data”, it is difficult to deny that the scale and scope, and subsequently, its importance, of data has dramatically increased in the past decade. Manipulation of large data set is becoming an essential skill for applied researchers. Having a solid foundation in programming will certainly help in this area.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;These arguments generally point to (i) if you are an end-user, programming skills will make your life easier by providing the ability of automating repetitive tasks; (ii) if you are an econometrician, then programming is a &lt;strong&gt;must&lt;/strong&gt; have skills.&lt;/p&gt;
+
+&lt;h2 id=&quot;which-language&quot;&gt;Which Language?&lt;/h2&gt;
+
+&lt;p&gt;Even if you found the arguments above convincing, computer programming can be a challenging task to those who have never programmed before. Then, of course, there is this seemingly important question, which language? Surely you do not want to learn one language only to find out it is not sufficient and have to learn something else.&lt;/p&gt;
+
+&lt;p&gt;The bad news is that programming language(s) is a little like the latest technology. There are always better, newer alternatives. So the key is not to pick a language with the hope that the language is the only one you will ever need, but rather, construct a methodology that allows one to learn a new language efficiently.&lt;/p&gt;
+
+&lt;p&gt;The good news is that, you don’t need to know everything about the language for it to be useful. For the most parts, there are only five areas of a programming language that you need to understand before it becomes useful. Of course, one can get better and more efficient with the language as they learn more but these five areas provide a minimum starting point.&lt;/p&gt;
+
+&lt;h2 id=&quot;five-elements&quot;&gt;Five Elements&lt;/h2&gt;
+
+&lt;p&gt;The five elements are&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Data types and their operations.&lt;/li&gt;
+  &lt;li&gt;Conditional statements i.e. if-then-else&lt;/li&gt;
+  &lt;li&gt;Loops.&lt;/li&gt;
+  &lt;li&gt;Basic input/output.&lt;/li&gt;
+  &lt;li&gt;User defined function.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;data-types-and-their-operations&quot;&gt;Data types and their operations&lt;/h3&gt;
+
+&lt;p&gt;Variables in most programming languages distinguish between &lt;em&gt;integer&lt;/em&gt;, &lt;em&gt;float&lt;/em&gt; (real number) and &lt;em&gt;characters&lt;/em&gt;. More complex data types can be built from these. For example, a string can be viewed as a collection of &lt;em&gt;characters&lt;/em&gt;, a vector can be viewed as an array of intergers or float. Some programming languges, such as C, allows one to define more complex &lt;em&gt;data structure&lt;/em&gt; from these types.&lt;/p&gt;
+
+&lt;p&gt;Some languages are &lt;em&gt;static&lt;/em&gt; typing while the others are &lt;em&gt;dynamic&lt;/em&gt; typing. The former requires all variables to be given a &lt;em&gt;type&lt;/em&gt; before values can be assigned to them. Dynamic typing does not require variables to be given a type. In fact, variables can have different types throughout the execution of the code. This is generally not advised as it can potentially created bugs that are difficult to detect.&lt;/p&gt;
+
+&lt;p&gt;In general, we want to understand how to operate or manipualate basic data types. For example, if let \( z = a+b \) and assuming both \( a \) and \( b \) are integers, then one would expect the variable, \( z\), will also be of a type integer. This should be obvious from a mathematical viewpoint and one can view this as a computing implementation of it.&lt;/p&gt;
+
+&lt;p&gt;Perhaps the more interesting question is what data type would \( z \) be if \( a \) is an integer but \( b \) is a float. In most cases, the most general data type preveal but there is no consistent rule on this. In some languages, such as C, operation between two different types are not allowed while in other instances, it can produce unpredictable results. This is why understanding data types and their operators are so important.&lt;/p&gt;
+
+&lt;h2 id=&quot;conditional-statements&quot;&gt;Conditional statements&lt;/h2&gt;
+
+&lt;p&gt;Conditional statements allow us to automate decision making based on a set of clearly specified rules. This is the fundemental element in allowing computer to make decision. Standard conditional statement usually involves the &lt;em&gt;if-then, else-if-then, else&lt;/em&gt; type structure. That is&lt;/p&gt;
+
+&lt;h2 id=&quot;loops&quot;&gt;Loops&lt;/h2&gt;
+
+&lt;p&gt;The basic idea of a loop is to repeat a set of instructions over and over again. The two most popular loop structures are &lt;em&gt;for&lt;/em&gt;-loop and &lt;em&gt;while&lt;/em&gt;-loop. The former allows one to specify the number of times the instructions should be repeated while the latter specifies the &lt;em&gt;terminal&lt;/em&gt; condition. That is, the instructions will keep on repeating until the terminal condition is met.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 08 Dec 2019 16:03:48 +0800</pubDate>
+        <link>http://chansta.gitlab.io//2019/12/08/fiveelements.html</link>
+        <guid isPermaLink="true">http://chansta.gitlab.io//2019/12/08/fiveelements.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Update</title>
+        <description>&lt;h1 id=&quot;moving-home&quot;&gt;Moving Home&lt;/h1&gt;
+
+&lt;p&gt;This site has since moved from &lt;a href=&quot;http://www.github.com&quot;&gt;github&lt;/a&gt; to &lt;a href=&quot;http://www.gitlab.com&quot;&gt;gitlab&lt;/a&gt;. This allows me to consoliate all of my exisiting codes. This will hopefully allow me to have a smoother workflow, so that I can actually do something meaningful in this blog.&lt;/p&gt;
+
+&lt;h1 id=&quot;moving-forward&quot;&gt;Moving forward&lt;/h1&gt;
+
+&lt;p&gt;The idea of this blog is to provide some thoughts and resources for anyone who are interested in computational econometrics, especially for people with no coding background but interested in using open source languages. Topics and ideas are welcome.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 30 Oct 2019 00:00:00 +0800</pubDate>
+        <link>http://chansta.gitlab.io//2019/10/30/update.html</link>
+        <guid isPermaLink="true">http://chansta.gitlab.io//2019/10/30/update.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Generating multinomial terms with loop and recursion</title>
@@ -16,7 +106,7 @@
 
 &lt;p&gt;Consider the multinomial expansion:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left ( \sum^n_{i=1} x_i \right )^k = \sum_{k_1=0}^k \ldots \sum_{k_{n-1}=0}^{k_{n-2}} \left [ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \prod ^n_{i=1} x_i^{\Delta k_i} \right ]&lt;/script&gt;
+\[\left ( \sum^n_{i=1} x_i \right )^k = \sum_{k_1=0}^k \ldots \sum_{k_{n-1}=0}^{k_{n-2}} \left [ \frac{k!}{\prod_{i=1}^{n-1} k_i!} \prod ^n_{i=1} x_i^{\Delta k_i} \right ]\]
 
 &lt;p&gt;where \( \Delta k_i = k_{i+1} - k_i \) with \( k_0 = k \) and \( k_n = 0 \).&lt;/p&gt;
 
@@ -48,37 +138,8 @@
 
 </description>
         <pubDate>Fri, 26 Oct 2018 13:17:42 +0800</pubDate>
-        <link>http://localhost:4000/2018/10/26/multinomial.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/26/multinomial.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Programming for Econometricians - An Overview</title>
-        <description>&lt;h2 id=&quot;what-bother&quot;&gt;What bother?&lt;/h2&gt;
-
-&lt;p&gt;It is certainly true that modern econometric software, such as STATA and Eviews, are powerful tools for econometric analysis. The power of these tools centers around the fact that virtually all popular econometric routines, no matter how complicated or sophasticated, are reduced into a sequence of simple “point and click” procedures or a few lines of relatively simple commands. The ability of conducting econometric analysis without any knowledge of programming certainly has its own appeals. After all, why should a non-programmer learn programming?&lt;/p&gt;
-
-&lt;p&gt;There are few good reasons why econometricians, and to some extend, applied economists should have programming skills.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Automation: Mordern analysis often require multiple analyses on the same dataset, or same analysis on multiple datasets. Rather than conducting the analysis by typing the same commands over and over again, it is certainly more efficient to create a simple script to automate any repetitive tasks. &lt;em&gt;Automation&lt;/em&gt; requires programming skills.&lt;/li&gt;
-  &lt;li&gt;Progress of econometrics is often faster than the software update cycles. Relying on pre-programmed routines in your favorite software means that you ability to access the latest econometric techniqes is limited. The ability to program means that you can implement the latest econometric techniques without having to wait for the software update.&lt;/li&gt;
-  &lt;li&gt;The popularity of econometric techniques seems to be directly related to their accessibilities. Ironically, end-users of new techniques do not generally want to do programming. Thus, if you want to promote your new techniques, chances are, you will have to program it yourself and make it publically available.&lt;/li&gt;
-  &lt;li&gt;Monte Carlo experiements are often expected in econometric research. Some of these experiements are computationally extensive but good background in programming can often help to improve computation efficiency. 
-These arguments generally point to (i) if you are an end-user, programming skills will make your life easier by providing the ability of automating repetitive task; (ii) if you are an econometrician, then programming is a &lt;strong&gt;must&lt;/strong&gt; have skills.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;five-elements&quot;&gt;Five Elements&lt;/h2&gt;
-
-&lt;p&gt;Even if you found the arguments above convincing, the reality of leanring programming can be a challenging to those who have never programmed before. Then, of course, there is this seemingly important question, which language? Surely you do not want to learn one language only to find out it is not sufficient and have to learn something else.&lt;/p&gt;
-
-&lt;p&gt;The bad news is that programming language(s) is a little like the latest technology. There are always better, newer alternatives.&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 20 Jan 2018 21:49:37 +0800</pubDate>
-        <link>http://localhost:4000/2018/01/20/fiveelements.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/01/20/fiveelements.html</guid>
+        <link>http://chansta.gitlab.io//2018/10/26/multinomial.html</link>
+        <guid isPermaLink="true">http://chansta.gitlab.io//2018/10/26/multinomial.html</guid>
         
         
       </item>
@@ -94,8 +155,8 @@ These arguments generally point to (i) if you are an end-user, programming skill
 
 </description>
         <pubDate>Sat, 04 Feb 2017 19:27:12 +0800</pubDate>
-        <link>http://localhost:4000/2017/02/04/secndpost.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/02/04/secndpost.html</guid>
+        <link>http://chansta.gitlab.io//2017/02/04/secndpost.html</link>
+        <guid isPermaLink="true">http://chansta.gitlab.io//2017/02/04/secndpost.html</guid>
         
         
       </item>
@@ -110,10 +171,12 @@ These arguments generally point to (i) if you are an end-user, programming skill
 
 &lt;p&gt;However, my first post is to express my deepest gratitude to &lt;a href=&quot;http://www.jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; and &lt;a href=&quot;http://www.github.com&quot;&gt;Github&lt;/a&gt; which make this blog possible. I would also like to thank &lt;a href=&quot;http://www.andreabedini.com&quot;&gt;Andrea Bedini&lt;/a&gt; who pointed me to the right direction that is Jekyll+github.&lt;/p&gt;
 
+&lt;p&gt;The migration from github to gitlab is a natural one since MS….&lt;/p&gt;
+
 </description>
         <pubDate>Sat, 23 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/04/23/first-post.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/04/23/first-post.html</guid>
+        <link>http://chansta.gitlab.io//2016/04/23/first-post.html</link>
+        <guid isPermaLink="true">http://chansta.gitlab.io//2016/04/23/first-post.html</guid>
         
         
       </item>

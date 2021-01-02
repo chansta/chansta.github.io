@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About Me</title>
-  <meta name="description" content="This site is dedicated to computational econometrics using open source software. 
-">
+  <title>Programming for Econometricians - An Overview</title>
+  <meta name="description" content="Why bother?">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://chansta.gitlab.io//about/">
+  <link rel="canonical" href="http://chansta.gitlab.io//2019/12/08/fiveelements.html">
   <link rel="alternate" type="application/rss+xml" title="Coding Econometrics" href="http://chansta.gitlab.io//feed.xml">
 </head>
 
@@ -61,25 +60,76 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About Me</h1>
+    <h1 class="post-title" itemprop="name headline">Programming for Econometricians - An Overview</h1>
+    <p class="post-meta"><time datetime="2019-12-08T16:03:48+08:00" itemprop="datePublished">Dec 8, 2019</time></p>
   </header>
 
-  <div class="post-content">
-    <p>My name is Felix and I am an <a href="https://en.wikipedia.org/wiki/Econometrics">econometrician</a>. Officially I am an Associate Professor in the <a href="http://business.curtin.edu.au/schools-and-departments/economics-and-finance/">School of Economics and Finance</a> at <a href="http://www.curtin.edu.au">Curtin University</a>. My research concerns mostly on theoretical and applied econometrics but my passion is the promotion of computational econometrics through open source software.</p>
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="why-bother">Why bother?</h2>
 
-<p>This passion is a result of one of the most frequently asked questions by students, namely,</p>
+<p>It is certainly true that modern econometric software, such as STATA and Eviews, are powerful tools for econometric analysis. The power of these tools centers around the fact that virtually all popular econometric routines, no matter how complicated or sophasticated, are reduced into a sequence of simple “point and click” procedures or a few lines of relatively simple commands. The ability of conducting econometric analysis without any knowledge of programming certainly has its own appeals. After all, why should a non-programmer learn programming?</p>
 
-<p><em>which econometrics software should I use?</em></p>
+<p>There are few good reasons why econometricians, and to some extend, applied economists should have programming skills.</p>
 
-<p>While software such as <a href="http://www.eviews.com">Eviews</a> and <a href="http://www.stata.com">STATA</a> provide very powerful tools for econometric analysis, I maintain that the best way to learn econometrics is to implement various econometric techniques in computers. This is in the same spirit as the old wisdom that <em>the best way to test your understanding about a concept, is trying to explain that concept to someone else</em>. In other words, one can perhaps take some comfort in their understanding on certain econometric concepts, if they can instruct the computer to conduct the exact econometric analysis.</p>
+<ol>
+  <li>
+    <p>Automation: Mordern analysis often require multiple analyses on the same dataset, or same analysis on multiple datasets. Rather than conducting the analysis by typing the same commands over and over again, it is certainly more efficient to create a simple script to automate any repetitive tasks. <em>Automation</em> requires programming skills.</p>
+  </li>
+  <li>
+    <p>Cutting edge: The progress of econometrics is often faster than the software update cycles. Relying on pre-programmed routines in your favorite software means that your ability to utilise the latest econometric techniqes is limited by the software update cycle. The ability to program means that you can implement the latest econometric techniques without having to wait for the software update.</p>
+  </li>
+  <li>
+    <p>Promotion: The popularity of econometric techniques seems to be directly related to their accessibilities. Ironically, end-users of new techniques do not generally want to do programming. Thus, if you want to promote your new techniques, chances are, you will have to program it yourself and make it publically available.</p>
+  </li>
+  <li>
+    <p>Simulation: Monte Carlo experiements are often expected in econometric research. Some of these experiements are computationally extensive but good background in programming can often help to improve computation efficiency.</p>
+  </li>
+  <li>
+    <p>Emerging importance of “big data”. Regardless your view on the term “big data”, it is difficult to deny that the scale and scope, and subsequently, its importance, of data has dramatically increased in the past decade. Manipulation of large data set is becoming an essential skill for applied researchers. Having a solid foundation in programming will certainly help in this area.</p>
+  </li>
+</ol>
 
-<p>The open source community provided a wide range of platforms to make this learning exercise a complete joy. Apart from the statistical orientated languages such as <a href="http://www.r-project.org">R</a>, languages such as <a href="http://www.python.org">Python</a> and <a href="http://www.julialang.org">Julia</a> provide powerful and cost effective platforms for poor PhD students to consolidate and expand their econometric knowledge.</p>
+<p>These arguments generally point to (i) if you are an end-user, programming skills will make your life easier by providing the ability of automating repetitive tasks; (ii) if you are an econometrician, then programming is a <strong>must</strong> have skills.</p>
 
-<p>While I have a slight preference towards Python and C with the assistant of the <a href="http://www.gnu.org/software/gsl/">GSL</a> library, I am hoping this blog serves a useful purpose for students and professionals to join and discuss programming issues concerning econometric problems.</p>
+<h2 id="which-language">Which Language?</h2>
 
+<p>Even if you found the arguments above convincing, computer programming can be a challenging task to those who have never programmed before. Then, of course, there is this seemingly important question, which language? Surely you do not want to learn one language only to find out it is not sufficient and have to learn something else.</p>
+
+<p>The bad news is that programming language(s) is a little like the latest technology. There are always better, newer alternatives. So the key is not to pick a language with the hope that the language is the only one you will ever need, but rather, construct a methodology that allows one to learn a new language efficiently.</p>
+
+<p>The good news is that, you don’t need to know everything about the language for it to be useful. For the most parts, there are only five areas of a programming language that you need to understand before it becomes useful. Of course, one can get better and more efficient with the language as they learn more but these five areas provide a minimum starting point.</p>
+
+<h2 id="five-elements">Five Elements</h2>
+
+<p>The five elements are</p>
+<ol>
+  <li>Data types and their operations.</li>
+  <li>Conditional statements i.e. if-then-else</li>
+  <li>Loops.</li>
+  <li>Basic input/output.</li>
+  <li>User defined function.</li>
+</ol>
+
+<h3 id="data-types-and-their-operations">Data types and their operations</h3>
+
+<p>Variables in most programming languages distinguish between <em>integer</em>, <em>float</em> (real number) and <em>characters</em>. More complex data types can be built from these. For example, a string can be viewed as a collection of <em>characters</em>, a vector can be viewed as an array of intergers or float. Some programming languges, such as C, allows one to define more complex <em>data structure</em> from these types.</p>
+
+<p>Some languages are <em>static</em> typing while the others are <em>dynamic</em> typing. The former requires all variables to be given a <em>type</em> before values can be assigned to them. Dynamic typing does not require variables to be given a type. In fact, variables can have different types throughout the execution of the code. This is generally not advised as it can potentially created bugs that are difficult to detect.</p>
+
+<p>In general, we want to understand how to operate or manipualate basic data types. For example, if let \( z = a+b \) and assuming both \( a \) and \( b \) are integers, then one would expect the variable, \( z\), will also be of a type integer. This should be obvious from a mathematical viewpoint and one can view this as a computing implementation of it.</p>
+
+<p>Perhaps the more interesting question is what data type would \( z \) be if \( a \) is an integer but \( b \) is a float. In most cases, the most general data type preveal but there is no consistent rule on this. In some languages, such as C, operation between two different types are not allowed while in other instances, it can produce unpredictable results. This is why understanding data types and their operators are so important.</p>
+
+<h2 id="conditional-statements">Conditional statements</h2>
+
+<p>Conditional statements allow us to automate decision making based on a set of clearly specified rules. This is the fundemental element in allowing computer to make decision. Standard conditional statement usually involves the <em>if-then, else-if-then, else</em> type structure. That is</p>
+
+<h2 id="loops">Loops</h2>
+
+<p>The basic idea of a loop is to repeat a set of instructions over and over again. The two most popular loop structures are <em>for</em>-loop and <em>while</em>-loop. The former allows one to specify the number of times the instructions should be repeated while the latter specifies the <em>terminal</em> condition. That is, the instructions will keep on repeating until the terminal condition is met.</p>
 
   </div>
 
